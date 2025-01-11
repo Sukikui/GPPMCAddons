@@ -1,13 +1,23 @@
 package com.github.gpaddons.gppmcaddons;
 
-import com.github.gpaddons.gppmcaddons.listeners.HorsePermissionListener;
+import com.github.gpaddons.gppmcaddons.config.Configuration;
+import com.github.gpaddons.gppmcaddons.listeners.ClaimPermissionCheckListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class GPPMCAddons extends JavaPlugin
-{
+public class GPPMCAddons extends JavaPlugin {
+
+    private Configuration config;
+
     @Override
-    public void onEnable()
-    {
-        getServer().getPluginManager().registerEvents(new HorsePermissionListener(), this);
+    public void onEnable() {
+
+        // Save default configuration
+        saveDefaultConfig();
+
+        // Initialize configuration
+        config = new Configuration(this);
+
+        // Register event listeners
+        getServer().getPluginManager().registerEvents(new ClaimPermissionCheckListener(config), this);
     }
 }

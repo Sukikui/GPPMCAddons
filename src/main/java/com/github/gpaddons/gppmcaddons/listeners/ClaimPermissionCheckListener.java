@@ -1,6 +1,7 @@
 package com.github.gpaddons.gppmcaddons.listeners;
 
-import com.github.gpaddons.gppmcaddons.utils.HorseUtils;
+import com.github.gpaddons.gppmcaddons.config.Configuration;
+import com.github.gpaddons.gppmcaddons.utils.HorseTetheringUtils;
 import me.ryanhamshire.GriefPrevention.events.ClaimPermissionCheckEvent;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Horse;
@@ -12,11 +13,20 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 
 
-public class HorsePermissionListener implements Listener {
+public class ClaimPermissionCheckListener implements Listener {
+
+    private final Configuration config;
+
+    public ClaimPermissionCheckListener(Configuration config) {
+        this.config = config;
+    }
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = false)
     public void onCheckPermission(ClaimPermissionCheckEvent event)
     {
+        // Check if the "overrideClaimTethering" setting is enabled
+        if (!config.isOverrideClaimTetheringEnabled()) return;
+
         Player player = event.getCheckedPlayer();
         Event triggeringEvent = event.getTriggeringEvent();
 
@@ -27,14 +37,14 @@ public class HorsePermissionListener implements Listener {
         {
             // Check if block is a fence
             Block block = blockEvent.getBlock();
-            if (!HorseUtils.isFenceBlock(block)) return;
+            if (!HorseTetheringUtils.isFenceBlock(block)) return;
 
             // Check whether a horse with which the player interacts exists
-            Horse horse = HorseUtils.getHorseFromFence(block, player);
+            Horse horse = HorseTetheringUtils.getHorseFromFence(block, player);
             if (horse == null) return;
 
             // Check if horse has an owner
-            Player owner = HorseUtils.getHorseOwner(horse);
+            Player owner = HorseTetheringUtils.getHorseOwner(horse);
             if (owner == null) return;
 
             // Check if player is the owner and allow the action

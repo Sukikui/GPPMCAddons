@@ -1,31 +1,17 @@
 package com.github.gpaddons.gppmcaddons.utils;
 
 import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.Tag;
 import org.bukkit.block.Block;
 import org.bukkit.entity.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-import java.util.Set;
 
 
-public class HorseUtils
+public class HorseTetheringUtils
 {
     private static final double SEARCH_RADIUS = 20.0;
-
-    private static final Set<Material> FENCE_MATERIALS = Set.of(
-            Material.OAK_FENCE,
-            Material.ACACIA_FENCE,
-            Material.BIRCH_FENCE,
-            Material.DARK_OAK_FENCE,
-            Material.JUNGLE_FENCE,
-            Material.SPRUCE_FENCE,
-            Material.BAMBOO_FENCE,
-            Material.NETHER_BRICK_FENCE,
-            Material.CRIMSON_FENCE,
-            Material.MANGROVE_FENCE
-    );
 
     /**
      * Check if the block is a fence
@@ -34,9 +20,8 @@ public class HorseUtils
      */
     public static boolean isFenceBlock(@NotNull Block block)
     {
-        return FENCE_MATERIALS.contains(block.getType());
+        return Tag.FENCES.isTagged(block.getType());
     }
-
 
     /**
      * Get the horse entity that is leashed to the fence block or the player that interacted with the fence
@@ -67,7 +52,6 @@ public class HorseUtils
                             hitch.getLocation().getBlock().equals(fence)))
                 return horse;
         }
-
         // No horse found
         return null;
     }
