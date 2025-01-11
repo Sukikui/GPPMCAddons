@@ -4,6 +4,7 @@ import com.github.gpaddons.gppmcaddons.config.Configuration;
 import com.github.gpaddons.gppmcaddons.listeners.ClaimPermissionCheckListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
+
 public class GPPMCAddons extends JavaPlugin {
 
     private Configuration config;
@@ -19,5 +20,9 @@ public class GPPMCAddons extends JavaPlugin {
 
         // Register event listeners
         getServer().getPluginManager().registerEvents(new ClaimPermissionCheckListener(config), this);
+    }
+
+    public Configuration getConfiguration() {
+        return config;
     }
 }
