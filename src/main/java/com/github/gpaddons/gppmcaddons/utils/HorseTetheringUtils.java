@@ -9,8 +9,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 
-public class HorseTetheringUtils
-{
+public class HorseTetheringUtils {
+
     private static final double SEARCH_RADIUS = 20.0;
 
     /**
@@ -18,8 +18,7 @@ public class HorseTetheringUtils
      * @param block Block to check
      * @return True if block is a fence, false otherwise
      */
-    public static boolean isFenceBlock(@NotNull Block block)
-    {
+    public static boolean isFenceBlock(@NotNull Block block) {
         return Tag.FENCES.isTagged(block.getType());
     }
 
@@ -29,8 +28,7 @@ public class HorseTetheringUtils
      * @param interactPlayer Player that interacted with the fence
      * @return Leashed horse entity or null if not found
      */
-    public static Horse getHorseFromFence(@NotNull Block fence, @NotNull Player interactPlayer)
-    {
+    public static Horse getHorseFromFence(@NotNull Block fence, @NotNull Player interactPlayer) {
         // Check if block is a fence
         if (!isFenceBlock(fence))
             return null;
@@ -61,8 +59,7 @@ public class HorseTetheringUtils
      * @param horse Horse entity
      * @return Owner of the horse or null if not found
      */
-    public static Player getHorseOwner(@NotNull Horse horse)
-    {
+    public static Player getHorseOwner(@NotNull Horse horse) {
         // Check if horse is tamed
         if (horse.isTamed() && horse.getOwner() instanceof Player owner)
             return owner;

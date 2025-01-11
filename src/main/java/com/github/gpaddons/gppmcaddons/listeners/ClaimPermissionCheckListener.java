@@ -22,8 +22,7 @@ public class ClaimPermissionCheckListener implements Listener {
     }
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = false)
-    public void onCheckPermission(ClaimPermissionCheckEvent event)
-    {
+    public void onCheckPermission(ClaimPermissionCheckEvent event) {
         // Check if the "overrideClaimTethering" setting is enabled
         if (!config.isOverrideClaimTetheringEnabled()) return;
 
