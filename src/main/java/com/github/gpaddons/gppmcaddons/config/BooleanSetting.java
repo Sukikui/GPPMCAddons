@@ -1,6 +1,5 @@
 package com.github.gpaddons.gppmcaddons.config;
 
-import com.github.jikoo.planarwrappers.config.ParsedSetting;
 import com.github.jikoo.planarwrappers.config.Setting;
 import org.bukkit.configuration.ConfigurationSection;
 import org.jetbrains.annotations.NotNull;
