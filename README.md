@@ -4,6 +4,8 @@ GriefPrevention addons for PMC servers.
 
 ## Features
 
+All features are configurable in the `config.yml` file.
+
 ### 🐴 HorseTethering
 
 | Parameter                    | Description                                           | Type      | Default |
