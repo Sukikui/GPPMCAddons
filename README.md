@@ -2,10 +2,10 @@
 
 GriefPrevention addons for PMC servers.
 
-# Features
+## Features
 
-### 🐴 Claim Tethering
+### 🐴 HorseTethering
 
-| Parameter                            | Description                                           | Type      | Default |
-|--------------------------------------|-------------------------------------------------------|-----------|---------|
-| `pmc.overrideClaimTethering.enabled` | Allows players to tie horses in other people's claims | `boolean` | `true`  |
+| Parameter                    | Description                                           | Type      | Default |
+|------------------------------|-------------------------------------------------------|-----------|---------|
+| `pmc.HorseTethering.enabled` | Allows players to tie horses in other people's claims | `boolean` | `true`  |

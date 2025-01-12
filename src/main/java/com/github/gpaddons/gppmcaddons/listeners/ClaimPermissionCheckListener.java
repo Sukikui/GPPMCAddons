@@ -23,8 +23,8 @@ public class ClaimPermissionCheckListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = false)
     public void onCheckPermission(ClaimPermissionCheckEvent event) {
-        // Check if the "overrideClaimTethering" setting is enabled
-        if (!config.isOverrideClaimTetheringEnabled()) return;
+        // Check if the "HorseTetheringEnabled" setting is enabled
+        if (!config.isHorseTetheringEnabled()) return;
 
         Player player = event.getCheckedPlayer();
         Event triggeringEvent = event.getTriggeringEvent();

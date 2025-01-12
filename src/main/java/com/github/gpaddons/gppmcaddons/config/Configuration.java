@@ -6,24 +6,24 @@ import org.jetbrains.annotations.NotNull;
 
 public class Configuration {
 
-    private final BooleanSetting overrideClaimTetheringEnabled;
+    private final BooleanSetting HorseTetheringEnabled;
 
     public Configuration(@NotNull GPPMCAddons plugin) {
 
-        // Initialize "enabled" parameter of "overrideClaimTethering"
-        overrideClaimTetheringEnabled = new BooleanSetting(
+        // Initialize "enabled" parameter of "HorseTetheringEnabled"
+        HorseTetheringEnabled = new BooleanSetting(
                 plugin.getConfig(),
-                "gp_pmc_addons.overrideClaimTethering.enabled",
+                "gp_pmc_addons.HorseTetheringEnabled.enabled",
                 true // default value
         );
     }
 
     /**
-     * Check if the "overrideClaimTethering" setting is enabled.
+     * Check if the "HorseTethering" setting is enabled.
      * @return True if the setting is enabled, false otherwise
      */
-    public boolean isOverrideClaimTetheringEnabled() {
+    public boolean isHorseTetheringEnabled() {
         // No override in this case
-        return overrideClaimTetheringEnabled.get("");
+        return HorseTetheringEnabled.get("");
     }
 }
