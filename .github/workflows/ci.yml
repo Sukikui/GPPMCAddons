@@ -14,17 +14,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: 🔍 Get Java version
-        id: extract-java-version
-        run: |
-          java_version=$(mvn help:evaluate -Dexpression=java.version -q -DforceStdout)
-          echo "java_version=$java_version" >> $GITHUB_ENV
-
       - name: ☕ Set up JDK
         uses: actions/setup-java@v2
         with:
-          java-version: ${{ env.java_version }}
-          distribution: 'adopt'
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: 🪶 Build with Maven
+        run: mvn clean package
 
       - name: "Auto-detect artifacts"
         run: |-
