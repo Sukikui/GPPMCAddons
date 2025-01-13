@@ -13,16 +13,16 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 
 
-public class ClaimPermissionCheckListener implements Listener {
+public class HorseTetheringListener implements Listener {
 
     private final Configuration config;
 
-    public ClaimPermissionCheckListener(Configuration config) {
+    public HorseTetheringListener(Configuration config) {
         this.config = config;
     }
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = false)
-    public void onCheckPermission(ClaimPermissionCheckEvent event) {
+    public void onClaimPermissionCheck(ClaimPermissionCheckEvent event) {
         // Check if the "HorseTetheringEnabled" setting is enabled
         if (!config.isHorseTetheringEnabled()) return;
 

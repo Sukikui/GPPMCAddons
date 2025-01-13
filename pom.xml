@@ -97,7 +97,7 @@
                             <relocations>
                                 <relocation>
                                     <pattern>com.github.jikoo.planarwrappers</pattern>
-                                    <shadedPattern>com.github.gpaddons.gpclaimexpiration.planarwrappers</shadedPattern>
+                                    <shadedPattern>com.github.gpaddons.gppmcaddons.planarwrappers</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
