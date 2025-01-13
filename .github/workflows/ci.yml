@@ -1,10 +1,38 @@
-name: Build
+name: CI
 
 on:
   push:
-    branches-ignore:
-      - dependabot/**
+    branches:
+      - main
+  pull_request:
 
 jobs:
-  run-ci:
-    uses: Jikoo/PlanarActions/.github/workflows/ci_maven.yml@master
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: 🔍 Get Java version
+        id: extract-java-version
+        run: |
+          java_version=$(mvn help:evaluate -Dexpression=java.version -q -DforceStdout)
+          echo "java_version=$java_version" >> $GITHUB_ENV
+
+      - name: ☕ Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: ${{ env.java_version }}
+          distribution: 'adopt'
+
+      - name: "Auto-detect artifacts"
+        run: |-
+          artifacts="$(mvn -q -Dexec.executable='echo' -Dexec.args='${project.build.directory}${file.separator}${project.build.finalName}.jar' exec:exec)"
+          printf "maven-artifacts<<EOF\n%s\nEOF\n" "$artifacts" >> "$GITHUB_ENV"
+
+      - name: "Upload auto-detected artifacts"
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.event.repository.name }}-ci
+          path: ${{ env.maven-artifacts }}
