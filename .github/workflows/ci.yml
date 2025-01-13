@@ -23,12 +23,12 @@ jobs:
       - name: 🪶 Build with Maven
         run: mvn clean package
 
-      - name: "Auto-detect artifacts"
+      - name: 📦 Auto-detect artifacts
         run: |-
           artifacts="$(mvn -q -Dexec.executable='echo' -Dexec.args='${project.build.directory}${file.separator}${project.build.finalName}.jar' exec:exec)"
           printf "maven-artifacts<<EOF\n%s\nEOF\n" "$artifacts" >> "$GITHUB_ENV"
 
-      - name: "Upload auto-detected artifacts"
+      - name: 📦 Upload auto-detected artifacts
         uses: actions/upload-artifact@v4
         with:
           name: ${{ github.event.repository.name }}-ci
