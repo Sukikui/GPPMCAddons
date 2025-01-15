@@ -1,0 +1,23 @@
+name: Auto-Merge Dependabot
+
+on:
+  pull_request:
+    types:
+      - closed
+  workflow_run:
+    workflows: ["CI"]
+    types:
+      - completed
+
+jobs:
+  auto-merge:
+    if: >-
+      github.actor == 'dependabot[bot]' && 
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Auto-merge Pull Request
+        uses: pascalgn/automerge-action@v0.16.4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
