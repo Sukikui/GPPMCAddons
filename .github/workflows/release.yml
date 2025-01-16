@@ -32,7 +32,7 @@ jobs:
       - name: 📥 Upload release asset
         uses: softprops/action-gh-release@v1
         with:
-          tag: ${{ github.event.release.tag_name }}
+          tag_name: ${{ github.event.release.tag_name }}
           files: target/${{ env.name }}-${{ env.version }}.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
