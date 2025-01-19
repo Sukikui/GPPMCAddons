@@ -14,7 +14,7 @@ public class Configuration {
         HorseTetheringEnabled = new BooleanSetting(
                 plugin.getConfig(),
                 "pmc.HorseTethering.enabled",
-                true // default value
+                true
         );
     }
 
