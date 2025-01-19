@@ -1,6 +1,6 @@
-# MIT License
+MIT License
 
-Copyright (c) 2025 Sukikui <nonces-cheviotte0o@icloud.com>
+Copyright (c) 2025 Sukikui
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
