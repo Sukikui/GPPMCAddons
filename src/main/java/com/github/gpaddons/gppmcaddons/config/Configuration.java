@@ -13,7 +13,7 @@ public class Configuration {
         // Initialize "enabled" parameter for the "HorseTethering" feature
         HorseTetheringEnabled = new BooleanSetting(
                 plugin.getConfig(),
-                "gp_pmc_addons.HorseTetheringEnabled.enabled",
+                "pmc.HorseTethering.enabled",
                 true // default value
         );
     }
